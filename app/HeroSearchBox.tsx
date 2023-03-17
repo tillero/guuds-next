@@ -1,5 +1,6 @@
 import TextInput from "@/components/TextInput";
 import Checkboxes from "@/components/HeroCategorySelection";
+import AutoComplete from "@/components/AutoComplete";
 
 const HeroSearchBox = () => {
   return (
@@ -8,8 +9,22 @@ const HeroSearchBox = () => {
         Finde die besten Produkte in deiner Gegend
       </h2>
       <form className="">
-        {/*<TextInput name="hello" />
-        <input
+        <div className="grid-cols-12 grid gap-6 px-4">
+          <AutoComplete
+            name="location"
+            label="Wo suchst du?"
+            placeholder="Ort, PLZ"
+            className="col-span-5"
+          />
+          <TextInput
+            name="term"
+            label="Stichwortsuche"
+            placeholder="Apfel, Bäckerei, Firma"
+            className="col-span-7"
+          />
+        </div>
+        <Checkboxes />
+        {/*<input
           className="h-8 w-12 bg-blue"
           type="submit"
           value="Karte"
@@ -20,8 +35,8 @@ const HeroSearchBox = () => {
           type="submit"
           value="Shop"
           formAction="/shop"
-  ></button>*/}
-        <Checkboxes />
+        ></button>
+        {/*<Checkboxes />*/}
       </form>
     </div>
   );
