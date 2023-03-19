@@ -2,13 +2,16 @@ import { CategoryCheckbox, Category } from "./CategoryCheckbox";
 
 const HeroCategorySelection = () => {
   return (
-    <div className="flex justify-between p-4 flex-wrap gap-3">
+    <div className="grid grid-cols-3 place-items-center sm:flex sm:justify-between p-4 gap-2">
       <CategoryCheckbox category={Category.Lebensmittel} />
       <CategoryCheckbox category={Category.Kleidung} />
       <CategoryCheckbox category={Category.Körperpflege} />
       <CategoryCheckbox category={Category.Einrichtung} />
-      <CategoryCheckbox category={Category.Haushalt} />
-      <CategoryCheckbox category={Category.Freizeit} />
+      <CategoryCheckbox className="" category={Category.Haushalt} />
+      <CategoryCheckbox
+        className="sm:max-lg:hidden"
+        category={Category.Freizeit}
+      />
     </div>
   );
 };

@@ -68,6 +68,10 @@ module.exports = {
         pressed: "#003C46",
       },
     },
+    screens: {
+      xs: "475px",
+      ...defaultTheme.screens,
+    },
     extend: {
       fontFamily: {
         sans: ["GTAmerica", ...defaultTheme.fontFamily.sans],

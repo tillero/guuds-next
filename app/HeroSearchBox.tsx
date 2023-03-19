@@ -1,11 +1,12 @@
 import TextInput from "@/components/TextInput";
 import Checkboxes from "@/components/HeroCategorySelection";
 import AutoComplete from "@/components/AutoComplete";
+import Button from "@/components/Button";
 
 const HeroSearchBox = () => {
   return (
-    <div className="bg-white xl:rounded-md">
-      <h2 className="text-black text-2xl font-serif p-4">
+    <div className="bg-white md:rounded-md pb-4">
+      <h2 className="text-black text-lg sm:text-xl md:text-2xl font-serif p-4">
         Finde die besten Produkte in deiner Gegend
       </h2>
       <form className="">
@@ -24,19 +25,24 @@ const HeroSearchBox = () => {
           />
         </div>
         <Checkboxes />
-        {/*<input
-          className="h-8 w-12 bg-blue"
-          type="submit"
-          value="Karte"
-          formAction="/karte"
-        ></input>
-        <button
-          className="h-8 w-12 bg-yellow"
-          type="submit"
-          value="Shop"
-          formAction="/shop"
-        ></button>
-        {/*<Checkboxes />*/}
+        <div className="h-11 flex justify-end px-4 gap-3">
+          <Button
+            className="h-full w-40"
+            label="Im Shop suchen"
+            type="submit"
+            value="Shop"
+            formAction="/shop"
+            secondary
+          />
+          <Button
+            className="h-full w-40"
+            label="Auf Karte suchen"
+            type="submit"
+            value="Karte"
+            formAction="/karte"
+            primary
+          />
+        </div>
       </form>
     </div>
   );
