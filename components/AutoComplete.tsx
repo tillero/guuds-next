@@ -18,8 +18,10 @@ const AutoComplete = ({
   const [text, setText] = useState("");
   const [visible, setVisible] = useState(false);
   const [options, setOptions] = useState(locations);
+  const [active, setActive] = useState(-1);
 
   const handleChange = (value: string) => {
+    setActive(-1);
     filterLocations(value);
     if (options.length < 1 && visible) {
       setVisible(false);
@@ -40,6 +42,23 @@ const AutoComplete = ({
     setVisible(false);
   };
 
+  const onFocusLost = () => {
+    setActive(-1);
+    setVisible(false);
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (active >= 0) optionClicked(options[active]);
+      else onFocusLost();
+    } else if (e.key === "ArrowUp") {
+      if (active > -1) setActive(active - 1);
+    } else if (e.key === "ArrowDown") {
+      if (active + 1 < options.length) setActive(active + 1);
+    }
+  };
+
   const Suggestions = () => {
     return (
       <div
@@ -48,14 +67,32 @@ const AutoComplete = ({
           classHidden
         }
       >
-        {options.map((el) => {
+        {options.map((el, i) => {
+          const selected = active === i ? " bg-grey" : "";
           return (
             <div
-              className="text-black p-3 hover:bg-grey cursor-pointer rounded"
-              key={el}
+              className={
+                "text-grey-dark p-3 hover:bg-grey cursor-pointer rounded" +
+                selected
+              }
+              key={i}
               onClick={() => optionClicked(el)}
+              onMouseDown={(e) => e.preventDefault()}
             >
-              {el}
+              {text
+                ? el.split(text).map((textPart, i) => {
+                    return i === 0 ? (
+                      <span>
+                        <b className="font-bold text-black">{textPart}</b>
+                        {text}
+                      </span>
+                    ) : (
+                      <span>
+                        <b className="font-bold text-black">{textPart}</b>
+                      </span>
+                    );
+                  })
+                : el}
             </div>
           );
         })}
@@ -68,13 +105,15 @@ const AutoComplete = ({
       <label className="text-black">{label}</label>
       <input
         type="text"
+        autoComplete="off"
         className="h-10 border-solid rounded-md border-grey bg-white border px-3 w-full text-black sans focus:outline focus:outline-blue-dark-2"
         name={name}
         value={text}
         onChange={(e) => handleChange(e.target.value)}
         onFocus={() => setVisible(true)}
-        /*onBlur={() => setVisible(false)}*/
+        onBlur={() => onFocusLost()}
         placeholder={placeholder}
+        onKeyDown={(e) => onKeyDown(e)}
       ></input>
       <Suggestions />
     </div>

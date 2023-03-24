@@ -7,7 +7,7 @@ const HeroCategorySelection = () => {
       <CategoryCheckbox category={Category.Kleidung} />
       <CategoryCheckbox category={Category.Körperpflege} />
       <CategoryCheckbox category={Category.Einrichtung} />
-      <CategoryCheckbox className="" category={Category.Haushalt} />
+      <CategoryCheckbox category={Category.Haushalt} />
       <CategoryCheckbox
         className="sm:max-lg:hidden"
         category={Category.Freizeit}

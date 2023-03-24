@@ -10,8 +10,8 @@ const mobileLinkStyle = "text-2xl text-center text-black block p-4";
 
 const Header = () => {
   return (
-    <header className="sticky top-0">
-      <div className="flex items-center justify-between h-16 md:h-[70px] z-10 bg-white xs:bg-blue-light-3 sm:bg-blue-light-2 md:bg-blue-light-1 lg:bg-blue xl:bg-yellow-light 2xl:bg-yellow shadow-[0_6px_6px_-6px_rgba(0,0,0,0.1)]">
+    <header className="sticky top-0 z-30">
+      <div className="flex items-center justify-between h-16 md:h-[70px] bg-red min-[320px]:bg-white ss:bg-blue-light-3 xs:bg-blue-light-2 sm:bg-blue-light-1 md:bg-blue lg:bg-blue-dark xl:bg-yellow-light 2xl:bg-yellow shadow-[0_6px_6px_-6px_rgba(0,0,0,0.1)]">
         <div className="flex md:basis-3/4 lg:basis-3/5 md:justify-between justify-start gap-4 basis-1/2 md:px-4">
           <BurgerNav>
             <nav>

@@ -11,7 +11,8 @@ interface ButtonProps {
   secondary?: boolean;
 }
 
-const defaultClass = "rounded-md sans text-base font-semibold px-3 py-1.5";
+const defaultClass =
+  "rounded-md sans text-sm ss:text-base font-semibold ss:px-3 py-1.5";
 const primaryClass =
   "text-white bg-yellow hover:bg-yellow-light border-yellow border hover:border-yellow-light";
 const secondaryClass =

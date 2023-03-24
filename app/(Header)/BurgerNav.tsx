@@ -11,7 +11,7 @@ const BurgerNav = ({ children }: { children?: React.ReactNode }) => {
         <BurgerIcon open={open} />
       </button>
       {open && (
-        <div className="bg-white absolute top-16 w-screen z-0 shadow-inner md:hidden">
+        <div className="bg-white absolute top-16 w-screen z-20 shadow-[inset_0_2px_4px_0_rgb(0,0,0,0.05),0_4px_6px_-1px_rgb(0,0,0,0.1),0_2px_4px_-2px_rgb(0,0,0,0.1)] md:hidden">
           {children}
         </div>
       )}

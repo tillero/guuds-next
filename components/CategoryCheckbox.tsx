@@ -54,7 +54,7 @@ export const CategoryCheckbox = ({
   return (
     <div
       className={twMerge(
-        "h-32 w-24 min-[360px]:w-[104px] xs:w-36 sm:w-28 md:w-32 inline-block",
+        "h-32 w-24 ss:w-[104px] xs:w-36 sm:w-28 md:w-32 inline-block",
         className
       )}
     >
@@ -65,7 +65,7 @@ export const CategoryCheckbox = ({
           id={category}
           value="true"
           className={
-            "absolute h-32 w-24 min-[360px]:w-[104px] xs:w-36 sm:w-28 md:w-32 cursor-pointer appearance-none text-black after:hover:bg-blue-light-3 text-sm after:border-solid after:rounded-md after:border-grey after:border after:bg-no-repeat after:bg-[center_top_1.5rem] after:h-32 after:absolute after:w-24 min-[360px]:after:w-[104px] xs:after:w-36 sm:after:w-28 md:after:w-32 checked:after:bg-blue-light-3 checked:after:border-blue-dark-2 after:flex after:items-end after:py-4 after:justify-center " +
+            "absolute h-32 w-24 ss:w-[104px] xs:w-36 sm:w-28 md:w-32 cursor-pointer appearance-none text-black after:hover:bg-blue-light-3 text-sm after:border-solid after:rounded-md after:border-grey after:border after:bg-no-repeat after:bg-[center_top_1.5rem] after:h-32 after:absolute after:w-24 ss:after:w-[104px] xs:after:w-36 sm:after:w-28 md:after:w-32 checked:after:bg-blue-light-3 checked:after:border-blue-dark-2 after:flex after:items-end after:py-4 after:justify-center " +
             content +
             " " +
             icon
