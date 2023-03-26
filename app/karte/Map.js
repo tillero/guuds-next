@@ -10,12 +10,12 @@ const center = {
 
 const containerStyle = {
   width: "100%",
-  height: "650px",
+  height: "800px",
 };
 
 const Map = () => {
   const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
+    id: "google-maps-script",
     googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY,
   });
 

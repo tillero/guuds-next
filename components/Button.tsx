@@ -1,4 +1,5 @@
 import { twMerge } from "tailwind-merge";
+import Icon, { IconType } from "./Icon";
 
 interface ButtonProps {
   label: string;
@@ -9,14 +10,19 @@ interface ButtonProps {
   formAction?: string;
   primary?: boolean;
   secondary?: boolean;
+  minimal?: boolean;
+  icon?: IconType;
 }
 
 const defaultClass =
-  "rounded-md sans text-sm ss:text-base font-semibold ss:px-3 py-1.5";
+  "rounded-md sans text-sm ss:text-base font-semibold px-1 ss:px-3 py-1.5";
 const primaryClass =
-  "text-white bg-yellow hover:bg-yellow-light border-yellow border hover:border-yellow-light";
+  "text-white bg-yellow hover:bg-yellow-light border-yellow border hover:border-yellow-light fill-white";
 const secondaryClass =
-  "text-blue border border-blue bg-white hover:text-white hover:bg-blue";
+  "text-blue border border-blue bg-white hover:text-white hover:bg-blue fill-blue hover:fill-white";
+const minimalClass =
+  "text-blue hover:text-blue-dark fill-blue hover:fill-blue-dark";
+const iconClass = "flex justify-between align-center";
 
 const Button = ({
   label,
@@ -27,20 +33,36 @@ const Button = ({
   formAction,
   primary,
   secondary,
+  minimal,
+  icon,
 }: ButtonProps) => {
-  let classes = secondary
-    ? defaultClass + " " + secondaryClass
-    : defaultClass + " " + primaryClass;
-  if (className) classes = twMerge(classes, className);
+  let ButtonClasses = defaultClass;
+  if (secondary) {
+    ButtonClasses += " " + secondaryClass;
+  } else if (minimal) {
+    ButtonClasses += " " + minimalClass;
+  } else {
+    ButtonClasses += " " + primaryClass;
+  }
+  if (icon) {
+    ButtonClasses += " " + iconClass;
+  }
+  if (className) ButtonClasses = twMerge(ButtonClasses, className);
   return (
     <button
-      className={classes}
+      className={ButtonClasses}
       value={value}
       type={type ? type : "button"}
       formAction={formAction}
       onClick={onClick}
     >
-      {label}
+      <div className="whitespace-nowrap">{label}</div>
+      {icon && (
+        <Icon
+          name={icon}
+          className={"h-full w-5 ml-1 ss:ml-3 fill-[inherit] self-center"}
+        ></Icon>
+      )}
     </button>
   );
 };
