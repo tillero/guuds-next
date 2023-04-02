@@ -1,6 +1,6 @@
 "use client";
 
-import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import React from "react";
 
 const center = {
@@ -13,7 +13,7 @@ const containerStyle = {
   height: "800px",
 };
 
-const Map = () => {
+const Map = ({ children }) => {
   const { isLoaded } = useJsApiLoader({
     id: "google-maps-script",
     googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY,
@@ -29,14 +29,7 @@ const Map = () => {
         disableDefaultUI: true,
       }}
     >
-      <Marker
-        position={{ lat: 46.947714, lng: 7.448031 }}
-        icon="/icons/marker_yellow.svg"
-      />
-      <Marker
-        position={{ lat: 46.949714, lng: 7.454031 }}
-        icon="/icons/marker_blue.svg"
-      />
+      {children}
     </GoogleMap>
   ) : (
     <></>

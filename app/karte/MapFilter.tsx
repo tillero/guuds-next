@@ -9,7 +9,7 @@ import TextInput from "@/components/TextInput";
 import { IconType } from "@/components/Icon";
 import { useState } from "react";
 
-const MapFilter = () => {
+const MapFilter = ({ categories }: { categories: string[] }) => {
   const titlesClass = "font-bold text-black my-2";
   return (
     <div className="px-3">
@@ -31,12 +31,36 @@ const MapFilter = () => {
       <Checkbox label="vor Ort" name="local" />
       <Divider />
       <div className={titlesClass}>Kategorien</div>
-      <Checkbox label="Lebensmittel" name={Category.Lebensmittel} />
-      <Checkbox label="Kleidung" name={Category.Kleidung} />
-      <Checkbox label="Körperpflege" name={Category.Körperpflege} />
-      <Checkbox label="Einrichtung" name={Category.Einrichtung} />
-      <Checkbox label="Haushalt" name={Category.Haushalt} />
-      <Checkbox label="Freizeit" name={Category.Freizeit} />
+      <Checkbox
+        label="Lebensmittel"
+        name={Category.Lebensmittel}
+        checked={categories.includes(Category.Lebensmittel)}
+      />
+      <Checkbox
+        label="Kleidung"
+        name={Category.Kleidung}
+        checked={categories.includes(Category.Kleidung)}
+      />
+      <Checkbox
+        label="Körperpflege"
+        name={Category.Körperpflege}
+        checked={categories.includes(Category.Körperpflege)}
+      />
+      <Checkbox
+        label="Einrichtung"
+        name={Category.Einrichtung}
+        checked={categories.includes(Category.Einrichtung)}
+      />
+      <Checkbox
+        label="Haushalt"
+        name={Category.Haushalt}
+        checked={categories.includes(Category.Haushalt)}
+      />
+      <Checkbox
+        label="Freizeit"
+        name={Category.Freizeit}
+        checked={categories.includes(Category.Freizeit)}
+      />
       <Divider />
       <div className={titlesClass}>Labels</div>
       <Checkbox label="Bio Suisse" name="bio-suisse" />
@@ -58,7 +82,7 @@ const MapFilter = () => {
   );
 };
 
-const MapFilterContainer = () => {
+const MapFilterContainer = ({ categories }: { categories: string[] }) => {
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -80,7 +104,7 @@ const MapFilterContainer = () => {
               onClick={() => setOpen(false)}
             />
           </div>
-          <MapFilter />
+          <MapFilter categories={categories} />
         </div>
       )}
     </>

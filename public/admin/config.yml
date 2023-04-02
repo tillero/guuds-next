@@ -1,0 +1,48 @@
+backend:
+  name: git-gateway # our repository provider
+  repo: tillero/guuds-next # username/repo
+  branch: cms-test # the main branch of our repo
+  base_url: "https://localhost" # our site's base URL
+  auth_endpoint: "api/auth" # used together with base_url for our custom endpoints (more on this later)
+media_folder: "public/images" # the folder we want to upload new images to
+public_folder: "/images" # the folder our images should be fetched from
+local_backend: true
+collections: # our content types, this is just an example!
+  - name: "stores"
+    label: "Stores"
+    folder: "content/stores"
+    create: true
+    slug: "{{name}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - {
+          label: "Location",
+          name: "location",
+          widget: "map",
+          default: '{"type":"Point","coordinates":[7.4477939,46.9479502]}',
+        }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Color", name: "color", widget: "color" }
+      - {
+          label: "Category",
+          name: "category",
+          widget: "select",
+          multiple: true,
+          options:
+            [
+              "groceries",
+              "clothes",
+              "hygiene",
+              "furnishing",
+              "household",
+              "leisure",
+            ],
+        }
+      - label: "Address"
+        name: "address"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "Street Address", name: "street", widget: "string" }
+          - { label: "City", name: "city", widget: "string" }
+          - { label: "Postal Code", name: "post-code", widget: "string" }
