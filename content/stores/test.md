@@ -9,5 +9,5 @@ category:
 address:
   street: Hauptstrasse 5
   city: Bern
-  post-code: "3007"
+  post-code: "3000"
 ---
